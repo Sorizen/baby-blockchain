@@ -1,0 +1,83 @@
+$white: #ffffff;
+$white-rgb: hexToRGB($white);
+$black: #000000;
+$black-rgb: hexToRGB($black);
+
+$background-primary-light: #d9d9d9;
+$background-primary-main: #e6f2ff;
+$background-primary-dark: #f6f6f6;
+
+$background-secondary-light: #ffffff;
+$background-secondary-main: #ffffff;
+$background-secondary-dark: #ffffff;
+
+$background-tertiary-light: #f3f8ff;
+$background-tertiary-main: #d0d2d3;
+$background-tertiary-dark: #8e9192;
+
+/* status colors */
+
+$success-light: #effff9;
+$success-main: #14a76d;
+$success-dark: #007742;
+
+$error-light: #ffe0e0;
+$error-main: #df0000;
+$error-dark: #a20000;
+
+$warning-light: #fffbf2;
+$warning-main: #ffa826;
+$warning-dark: #c77900;
+
+$info-light: #ecffff;
+$info-main: #40c4ff;
+$info-dark: #0094cc;
+
+/* brand colors */
+
+$primary-light: #e6f2ff;
+$primary-main: #007bff;
+$primary-dark: #006de1;
+
+$primary-light-rgb: hexToRGB($primary-light);
+$primary-main-rgb: hexToRGB($primary-main);
+$primary-dark-rgb: hexToRGB($primary-dark);
+
+$secondary-light: #ccc2dc;
+$secondary-main: #958da5;
+$secondary-dark: #625b71;
+
+$tertiary-light: #ffff6b;
+$tertiary-main: #fdd835;
+$tertiary-dark: #c6a700;
+
+/* typography colors */
+
+$text-primary-light: #a4a7ad;
+$text-primary-main: #1c1c1f;
+$text-primary-dark: #000000;
+
+$text-secondary-light: #5f646f;
+$text-secondary-main: #263238;
+$text-secondary-dark: #000a12;
+
+$text-primary-invert-light: #ffffff;
+$text-primary-invert-main: #ffffff;
+$text-primary-invert-dark: #ffffff;
+
+$text-secondary-invert-light: #ffffff;
+$text-secondary-invert-main: #ffffff;
+$text-secondary-invert-dark: #ffffff;
+
+/* border colors */
+
+$border-primary-light: #d0d5dd;
+$border-primary-main: #9e9e9e;
+$border-primary-dark: #707070;
+
+$border-primary-light-inverted: #ffffff;
+$border-primary-main-inverted: #ffffff;
+$border-primary-dark-inverted: #ffffff;
+
+$shadow-primary: rgba(0, 0, 0, 0.2);
+$shadow-secondary: rgba(16, 24, 40, 0.04);
