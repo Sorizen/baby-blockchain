@@ -5,18 +5,17 @@ export class Blockchain {
         this.coinDatabase = {};
         this.blockHistory = [];
         this.txDatabase = [];
-        this.faucetCoins = 100;
     }
 
-    async initBlockchain() {
+    initBlockchain() {
         const genesisBlock = new Block('0', []);
         genesisBlock.calculateBlockID();
         this.blockHistory.push(genesisBlock);
     }
 
-    async getTokenFromFaucet(account) {
-        this.coinDatabase[account.accountID] = this.faucetCoins;
-        account.updateBalance(this.faucetCoins);
+    getTokenFromFaucet(account, coinsCount) {
+        this.coinDatabase[account.accountID] = coinsCount;
+        account.updateBalance(coinsCount);
     }
 
     async validateBlock(block) {

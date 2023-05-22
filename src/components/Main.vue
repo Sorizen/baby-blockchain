@@ -1,48 +1,79 @@
 <template>
  <main class="main">
-
+   <h2 class="main__title">
+     Blockchain History
+   </h2>
+   <div class="main__blocks-history">
+     <BlockchainBlock
+         v-for="(block, idx) in blockHistory"
+         :key="idx"
+         :blockID="block.blockID"
+         :prevHash="block.prevHash"
+         :setOfTransactions="block.setOfTransactions"
+         :blockNumber="idx"
+     />
+   </div>
+   <div class="main__actions-wrapper">
+     <div class="main__actions">
+       <h2 class="main__title">
+         Blockchain actions
+       </h2>
+       <BlockchainActions />
+     </div>
+     <div class="main__accounts">
+       <h2 class="main__title">
+         Blockchain accounts
+       </h2>
+       <BlockchainAccounts />
+     </div>
+   </div>
  </main>
 </template>
 
 <script lang="js" setup>
+import BlockchainActions from './BlockchainActions.vue'
+import BlockchainBlock from '@/components/BlockchainBlock.vue'
+import BlockchainAccounts from './BlockchainAccounts.vue'
 import { useBlockchainStore } from '@/store'
-import { Blockchain, Account, Transaction, Block } from '@/core'
+import { Account, Transaction, Block } from '@/core'
+import { computed } from 'vue'
+
+const blockchainStore = useBlockchainStore();
+
+const blockHistory = computed(() => blockchainStore.blockchain.blockHistory)
 
 async function initBlockchain() {
-  const blockchain = new Blockchain();
-
-// Initialize the blockchain
-  await blockchain.initBlockchain();
-
-// Generate two new accounts
-  const account1 = await Account.genAccount();
-  const account2 = await Account.genAccount();
-
-// Get tokens from the faucet for account1
-  await blockchain.getTokenFromFaucet(account1);
-  await blockchain.getTokenFromFaucet(account2);
-
-// Create a transaction from account1 to account2
-  const operation = account1.createPaymentOp(account2, 50, 123);
-  const transaction = new Transaction([operation], 'transaction-123');
-
-// Sign the transaction
-  await transaction.signTransaction();
-
-// Create a block containing the transaction
-  const block = new Block(blockchain.blockHistory[blockchain.blockHistory.length - 1].blockID, [transaction]);
-  await block.calculateBlockID();
-
-// Validate the block and add it to the blockchain
-  await blockchain.validateBlock(block);
-
-// Get the account balances after the transaction
-  blockchain.getAccountBalances(account1, account2);
+  await blockchainStore.initBlockchain();
 }
 
 initBlockchain()
 </script>
 
 <style lang="scss" scoped>
+.main {
+  height: 100vh;
+  padding: toRem(20);
+}
 
+.main__title {
+  margin-bottom: toRem(10);
+}
+
+.main__blocks-history {
+  width: calc(100vw - #{toRem(40)});
+  overflow-y: auto;
+  display: flex;
+  gap: toRem(10);
+  padding-bottom: toRem(10);
+}
+
+.main__actions-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: toRem(50);
+}
+
+.main__actions {
+  padding-bottom: toRem(10);
+}
 </style>
